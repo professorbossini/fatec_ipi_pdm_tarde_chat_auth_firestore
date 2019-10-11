@@ -1,0 +1,2 @@
+include ':app'
+rootProject.name='fatec_ipi_pdm_tarde_chat_auth_firestore'

@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1040087694345",
+    "firebase_url": "https://fatecipipdmtardechatauthfirest.firebaseio.com",
+    "project_id": "fatecipipdmtardechatauthfirest",
+    "storage_bucket": "fatecipipdmtardechatauthfirest.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1040087694345:android:be2998355bfe8ba4170cd8",
+        "android_client_info": {
+          "package_name": "br.com.bossini.fatec_ipi_pdm_tarde_chat_auth_firestore"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1040087694345-qu32ge1qgtevnkb48a2kmeg31n99tgqh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "br.com.bossini.fatec_ipi_pdm_tarde_chat_auth_firestore",
+            "certificate_hash": "16000449122ec5478b8e1b7f4ad61742510e2ca0"
+          }
+        },
+        {
+          "client_id": "1040087694345-0akmjafuopetvtr3q47vf1u2m67p8966.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC8eb3QT27fX1AyOgBXMmajkpyiqtmNyWU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1040087694345-0akmjafuopetvtr3q47vf1u2m67p8966.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
