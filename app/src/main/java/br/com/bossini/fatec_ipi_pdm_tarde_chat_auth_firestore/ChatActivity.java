@@ -11,8 +11,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
@@ -21,11 +23,14 @@ import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import javax.annotation.Nullable;
 
@@ -101,6 +106,7 @@ public class ChatActivity extends AppCompatActivity {
 class ChatViewHolder extends RecyclerView.ViewHolder{
     TextView dataNomeTextView;
     TextView mensagemTextView;
+    ImageView pictureImageView;
 
     public ChatViewHolder (View raiz){
         super(raiz);
@@ -108,6 +114,8 @@ class ChatViewHolder extends RecyclerView.ViewHolder{
                 raiz.findViewById(R.id.dataNomeTextView);
         mensagemTextView =
                 raiz.findViewById(R.id.mensagemTextView);
+        pictureImageView =
+                raiz.findViewById(R.id.pictureImageView);
     }
 }
 
@@ -146,8 +154,33 @@ class ChatAdapter extends
         );
         holder.mensagemTextView.setText(m.getTexto()
         );
-    }
+        StorageReference pictureStorageReference =
+                FirebaseStorage.getInstance().getReference(
+                    String.format(
+                            Locale.getDefault(),
+                            "images/%s/profilePic.jpg",
+                            m.getEmail().replace("@", "")
+                    )
+                );
 
+        pictureStorageReference.getDownloadUrl()
+        .addOnSuccessListener(
+                (result) -> {
+                    Glide.
+                            with(context).
+                            load(pictureStorageReference).
+                            into(holder.pictureImageView);
+                }
+        ).addOnFailureListener(
+                (exception) -> {
+                    holder.pictureImageView.setImageResource(
+                            R.drawable.ic_person_black_50dp
+                    );
+                }
+        );
+
+
+    }
     @Override
     public int getItemCount() {
         return mensagens.size();
